@@ -1,3 +1,5 @@
+#saving in streamlit
+%%writefile app.py
 
 import pickle
 import streamlit as st
@@ -14,12 +16,12 @@ st.title('Salary Prediction App')
 # first column
 # Add input widgets for user inputs
 work_location_borough = st.selectbox(
-  "Work_location_borough",
+  "work_location_borough",
   ["MANHATTAN", "QUEENS", "BROOKLYN", "BRONX"]
 )
 
 title_description = st.selectbox(
-  "Title_description",
+  "title_description",
   [
     'PRINCIPAL ADMINISTRATIVE ASSOCIATE -  NON SUPVR',
     'YOUTH DEVELOPMENT SPECIALIST',
@@ -74,12 +76,12 @@ title_description = st.selectbox(
 )
 
 pay_basis = st.selectbox(
-  "Pay_basis",
+  "pay_basis",
   ['per Annum',
    'per Day',
    'per Hour']
 )
-regular_hours = st.slider("Regular_hours:",
+regular_hours = st.slider("regular_hours:",
  0, 3000, 1800)
 
 
@@ -89,10 +91,10 @@ if st.button("Predict"):
 
   # Prepare the input data as a DataFrame (since pipelines often expect a DataFrame)
   input_data = pd.DataFrame({
-    'Work_location_borough': [work_location_borough],
-    'Title_description': [title_description],
-    'Pay_basis': [pay_basis],
-    'Regular_hours': [regular_hours]
+    'work_location_borough': [work_location_borough],
+    'title_description': [title_description],
+    'pay_basis': [pay_basis],
+    'regular_hours': [regular_hours]
 
   }, index=[0])
   prediction = model.predict(input_data)[0].round(2)
