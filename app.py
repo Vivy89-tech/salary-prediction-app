@@ -1,5 +1,4 @@
 #saving in streamlit
-%%writefile app.py
 
 import pickle
 import streamlit as st
